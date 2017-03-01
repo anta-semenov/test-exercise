@@ -1,0 +1,26 @@
+{
+  "name": "test-exercise",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "json-server": "^0.9.5",
+    "npm-run-all": "^4.0.2",
+    "react-scripts": "0.9.3"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router": "^3.0.2",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.14.3"
+  },
+  "scripts": {
+    "start": "run-p start-js start-server",
+    "start-js": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start-server": "json-server server/db.json --port 3005"
+  }
+}
