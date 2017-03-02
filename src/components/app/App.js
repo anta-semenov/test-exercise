@@ -1,25 +1,33 @@
-import React, { Component } from 'react'
-import {Router, Route} from 'react-router'
-import Departments from '../departments/DepartmentsConnect'
-import Employess from '../employees/EmployeesConnect'
-import Sidebar from '../sidebar/Sidebar'
+import React from 'react'
+import {Link} from 'react-router'
 import './App.css'
 
-
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+const App = ({children, location: {pathname}}) => {
+  const isActive = type => pathname.indexOf(type) >= 0
+  return (
+    <div className='app'>
+      <div className='app-sidebar'>
+        <Link
+          className={`app-menu-item ${isActive('departments') ? 'active' : ''}`}
+          to='/departments'
+        >
+          Департаменты
+        </Link>
+        <Link
+          className={`app-menu-item ${isActive('employees') ? 'active' : ''}`}
+          to='/employees'
+        >
+          Работники
+        </Link>
       </div>
-    );
-  }
+
+      {children}
+    </div>
+  )
+
+}
+App.propTypes = {
+  children: React.PropTypes.node
 }
 
 export default App
