@@ -1,0 +1,9 @@
+.layout-footer {
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}

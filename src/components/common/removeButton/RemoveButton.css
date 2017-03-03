@@ -1,0 +1,27 @@
+.remove-button {
+  border-radius: 3px;
+  border: solid 1.5px #b00505;
+  color: #b00505;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 800;
+  width: 31px;
+  height: 20px;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #f5b5b5;
+}
+
+.remove-button-label {
+  position: absolute;
+  background-color: #b00505;
+  width: 12px;
+  height: 2px;
+  left: 8px;
+  top: 8px;
+}

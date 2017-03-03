@@ -1,0 +1,30 @@
+.table-row {
+  border: solid 1px #787878;
+  border-top: none;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.table-row.header {
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.table-row-item {
+  padding: 5px 7px;
+  border-right: solid 1px #c3c3c3;
+  box-sizing: border-box;
+}
+
+.table-row-item.last {
+  border-right: none;
+}
+
+.table-row-item.header {
+  padding: 5px 7px 3px 7px;
+
+  text-align: center;
+  color: #467ed2;
+}

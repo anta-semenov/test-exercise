@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Router, Route, browserHistory} from 'react-router'
 import {Provider} from 'react-redux'
 import store from '../createStore'

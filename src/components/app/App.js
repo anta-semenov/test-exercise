@@ -11,17 +11,20 @@ const App = ({children, location: {pathname}}) => {
           className={`app-menu-item ${isActive('departments') ? 'active' : ''}`}
           to='/departments'
         >
-          Департаменты
+          Departments
         </Link>
+
         <Link
           className={`app-menu-item ${isActive('employees') ? 'active' : ''}`}
           to='/employees'
         >
-          Работники
+          Employees
         </Link>
       </div>
 
-      {children}
+      <div className='app-content'>
+        {children}
+      </div>
     </div>
   )
 

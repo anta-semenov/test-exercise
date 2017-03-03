@@ -9,7 +9,7 @@ const employees = (state = {}, action) => {
       return {...state, [action.id]: action.employee}
     case actionTypes.DELETE_EMPLOYEE:
       return omit(state, action.id)
-      case actionTypes.LOAD_STATE:
+      case actionTypes.SET_STATE:
         return action.state.employees || state
     default:
       return state

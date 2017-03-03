@@ -1,13 +1,13 @@
-import {call, put, takeEvery, takeLast} from 'redux-saga/effects'
-import actionTypes from '../actions/ActionTypes'
+import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+import * as actionTypes from '../actions/ActionTypes'
 import {get, create, update, deleteDb} from '../api'
 
 export default function* rootSaga() {
   yield [
-    watchLoadState,
-    watchCreateRecord,
-    watchChangeRecord,
-    watchDeleteRecord
+    watchLoadState(),
+    watchCreateRecord(),
+    watchChangeRecord(),
+    watchDeleteRecord()
   ]
 }
 
@@ -15,7 +15,7 @@ export default function* rootSaga() {
   Watchers
 */
 function* watchLoadState() {
-  yield takeLast(actionTypes.LOAD_STATE, loadState)
+  yield takeLatest(actionTypes.LOAD_STATE, loadState)
 }
 
 function* watchCreateRecord() {
@@ -34,9 +34,26 @@ function* watchDeleteRecord() {
 /*
   Side effects
 */
+const processEntity = (db, entity) => {
+  const result = {}
+  if (Array.isArray(db[entity])) {
+    db[entity].forEach(item => result[item.id] = item)
+  } else if (typeof db[entity] === 'object') {
+    return db[entity]
+  }
+  return result
+}
+
 function* loadState() {
-  const state = yield call(get, 'db')
-  yield put({type: actionTypes.SET_STATE, state})
+  const db = yield call(get, 'db')
+
+  yield put({
+    type: actionTypes.SET_STATE,
+    state: {
+      departments: processEntity(db, 'departments'),
+      employees: processEntity(db, 'employees')
+    }
+  })
 }
 
 function* addRecord({recordType, data}) {

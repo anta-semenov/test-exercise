@@ -9,7 +9,7 @@ const departments = (state = {}, action) => {
       return {...state, [action.id]: action.department}
     case actionTypes.DELETE_DEPARTMENT:
       return omit(state, action.id)
-    case actionTypes.LOAD_STATE:
+    case actionTypes.SET_STATE:
       return action.state.departments || state
     default:
       return state
@@ -21,5 +21,5 @@ export default departments
 /*
  Selectors
 */
-export const getDepartments = state => state
+export const getDepartments = state => {console.log('get departments', state);return state}
 export const getDepartmentName = (state, id) => state[id].name
